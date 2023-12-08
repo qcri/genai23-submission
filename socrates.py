@@ -2,11 +2,8 @@ import chromadb
 from dotenv import load_dotenv
 from langchain.embeddings.gpt4all import GPT4AllEmbeddings
 from langchain.chat_models import AzureChatOpenAI
-from langchain.schema import HumanMessage, SystemMessage, AIMessage
+from langchain.schema import HumanMessage, SystemMessage
 from os import environ
-from langchain.vectorstores.chroma import Chroma
-from langchain.llms.openai import AzureOpenAI
-from langchain.chains import RetrievalQA
 
 load_dotenv()
 CHROMA_DATA_PATH = "data/"
@@ -34,18 +31,13 @@ def query_for_documents(query: str, n_results: int = 10, text_only=True) -> list
     else:
         return query_results
 
-def generate_response_chatgpt(query: str, n_results: int = 10) -> str:
+def generate_response(query: str, n_results: int = 10) -> str:
 
     documents = query_for_documents(query, n_results=n_results)
 
     model = AzureChatOpenAI(azure_endpoint=environ['AZURE_OPENAI_ENDPOINT'], api_key=environ['AZURE_OPENAI_API_KEY'], openai_api_version=environ['OPENAI_API_VERSION'], model=environ['MODEL_NAME'])
 
-    messages = [SystemMessage(content='You are an AI assistant for philosophy questions. Use only information from the following texts to answer the query from the user.')]
-
-    for doc in documents:
-        messages.append(SystemMessage(content=doc))
-
-    messages.append(HumanMessage(content=query))
+    messages = [SystemMessage(content='use only information from the following texts to answer the query from the user'), SystemMessage(content='\n'.join(documents)), HumanMessage(content=query)]
 
     print(messages)
 
