@@ -1,6 +1,9 @@
 import chromadb
 from dotenv import load_dotenv
 from langchain.embeddings.gpt4all import GPT4AllEmbeddings
+from langchain.chat_models import AzureChatOpenAI
+from langchain.schema import HumanMessage, SystemMessage, AIMessage
+from os import environ
 
 load_dotenv()
 CHROMA_DATA_PATH = "data/"
@@ -29,4 +32,25 @@ def query_for_documents(query: str, n_results: int = 4, text_only=True) -> list[
     else:
         return query_results
 
-print(query_for_documents("What is philosophy?", 3))
+print('-------------------------------------------------------------------')
+print(query_for_documents('does language modify thoughts'))
+
+def generate_response(query: str, n_results: int = 10) -> str:
+
+    documents = query_for_documents(query, n_results=n_results)
+
+    model = AzureChatOpenAI(azure_endpoint=environ['AZURE_OPENAI_ENDPOINT'], api_key=environ['AZURE_OPENAI_API_KEY'], openai_api_version=environ['OPENAI_API_VERSION'], model=environ['MODEL_NAME'])
+
+    messages = [SystemMessage(content='you are an AI assistant for philosophy questions')]
+
+    for doc in documents:
+        messages.append(AIMessage(content=doc))
+
+    messages.append(HumanMessage(content=query))
+
+    result = model(messages=messages)
+
+    return result.content
+
+print('-------------------------------------------------------------------')
+print(generate_response('does language modify thoughts'))

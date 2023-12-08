@@ -1,5 +1,6 @@
 
 langchain
 openai
-pypdf
 chromadb
+python-dotenv
+gpt4all
