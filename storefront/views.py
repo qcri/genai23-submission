@@ -4,4 +4,4 @@ from django.http import HttpResponse
 
 # Create your views here.
 def say_hello(request):
-    return render(request, "hello.html", {"names": ["hello",2,3, 4]})
+    return render(request, "hello.html", {"names": ["main page",2,3, 4]})
