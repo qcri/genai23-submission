@@ -4,6 +4,9 @@ from langchain.embeddings.gpt4all import GPT4AllEmbeddings
 from langchain.chat_models import AzureChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage, AIMessage
 from os import environ
+from langchain.vectorstores.chroma import Chroma
+from langchain.llms.openai import AzureOpenAI
+from langchain.chains import RetrievalQA
 
 load_dotenv()
 CHROMA_DATA_PATH = "data/"
@@ -33,7 +36,7 @@ def query_for_documents(query: str, n_results: int = 10, text_only=True) -> list
         return query_results
 
 
-def generate_response(query: str, n_results: int = 10) -> str:
+def generate_response_chatgpt(query: str, n_results: int = 10) -> str:
 
     documents = query_for_documents(query, n_results=n_results)
 
@@ -46,9 +49,22 @@ def generate_response(query: str, n_results: int = 10) -> str:
 
     messages.append(HumanMessage(content=query))
 
+    print(messages)
+
     result = model(messages=messages)
 
     return result.content
 
+def generate_response_rag(query: str, n_results: int = 10) -> str:
+    global chroma_client
+    vectorstore = Chroma("philosophy", gpt4allembed, "./data", None, {"hnsw:space": "cosine"}, chroma_client, None)
+    retriever = vectorstore.as_retriever()
+    llm = AzureOpenAI(temperature=0.2)
+    qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever)
+    query = "What is philosophy"
+    result = qa({'query': query})
+    return result
+    
+
 print('-------------------------------------------------------------------')
-print(generate_response('does language modify thoughts'))
+print(generate_response_chatgpt('does language modify thoughts'))
