@@ -31,7 +31,7 @@ def query_for_documents(query: str, n_results: int = 10, text_only=True) -> list
     else:
         return query_results
 
-def generate_response(query: str, n_results: int = 10) -> str:
+def generate_response(query: str, n_results: int = 10, return_documents=False) -> str:
 
     documents = query_for_documents(query, n_results=n_results)
 
@@ -39,12 +39,13 @@ def generate_response(query: str, n_results: int = 10) -> str:
 
     messages = [SystemMessage(content='use only information from the following texts to answer the query from the user'), SystemMessage(content='\n'.join(documents)), HumanMessage(content=query)]
 
-    print(messages)
-
     result = model(messages=messages)
-
-    return result.content
     
-
-print('-------------------------------------------------------------------')
-print(generate_response('Does language modify thoughts?'))
+    if return_documents:  
+        return result.content, documents
+    else:
+        return result.content
+    
+if __name__ == "__main__":
+    print('-------------------------------------------------------------------')
+    print(generate_response('Does language modify thoughts?'))
