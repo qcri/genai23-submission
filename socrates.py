@@ -2,29 +2,26 @@ import chromadb
 from dotenv import load_dotenv
 from langchain.embeddings.gpt4all import GPT4AllEmbeddings
 
+load_dotenv()
 CHROMA_DATA_PATH = "data/"
-EMBED_MODEL = "text-embedding-04"
 COLLECTION_NAME = "philosophy"
 
-load_dotenv()
-
 gpt4allembed = GPT4AllEmbeddings()
+chroma_client = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
 
-query = "What is philosophy?"
 
-query_results = gpt4allembed.embed_query(query)
-print(query_results)
+def query_for_documents(query: str, n_results: int = 4) -> list[str]:
+    global gpt4allembed, chroma_client
 
-client = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
+    query_results = gpt4allembed.embed_query(query)
 
-collection = client.get_or_create_collection(
-    name=COLLECTION_NAME,
-    metadata={"hnsw:space": "cosine"}
-)
+    collection = chroma_client.get_collection(
+        name=COLLECTION_NAME
+    )
 
-results = collection.query(
-    query_embeddings=[query_results],
-    n_results=5
-)
+    return collection.query(
+        query_embeddings=[query_results],
+        n_results=n_results
+    )
 
-print(results["documents"])
+print(query_for_documents("What is philosophy?", 3))
