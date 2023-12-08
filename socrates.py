@@ -12,8 +12,9 @@ COLLECTION_NAME = "philosophy"
 gpt4allembed = GPT4AllEmbeddings()
 chroma_client = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
 
+query = 'does language modify thoughts'
 
-def query_for_documents(query: str, n_results: int = 4, text_only=True) -> list[str]:
+def query_for_documents(query: str, n_results: int = 10, text_only=True) -> list[str]:
     global gpt4allembed, chroma_client
 
     query_results = gpt4allembed.embed_query(query)
@@ -31,9 +32,9 @@ def query_for_documents(query: str, n_results: int = 4, text_only=True) -> list[
         return query_results["documents"][0]
     else:
         return query_results
-
-print('-------------------------------------------------------------------')
-print(query_for_documents('does language modify thoughts'))
+    
+print('-----------------------------------------------------------')
+print(query_for_documents(query))
 
 def generate_response(query: str, n_results: int = 10) -> str:
 
@@ -41,7 +42,8 @@ def generate_response(query: str, n_results: int = 10) -> str:
 
     model = AzureChatOpenAI(azure_endpoint=environ['AZURE_OPENAI_ENDPOINT'], api_key=environ['AZURE_OPENAI_API_KEY'], openai_api_version=environ['OPENAI_API_VERSION'], model=environ['MODEL_NAME'])
 
-    messages = [SystemMessage(content='you are an AI assistant for philosophy questions')]
+    messages = [SystemMessage(content='you are an AI assistant for philosophy questions'),
+                SystemMessage(content='use only information from the following texts to answer the query from the user')]
 
     for doc in documents:
         messages.append(AIMessage(content=doc))
@@ -53,4 +55,4 @@ def generate_response(query: str, n_results: int = 10) -> str:
     return result.content
 
 print('-------------------------------------------------------------------')
-print(generate_response('does language modify thoughts'))
+print(generate_response(query))
