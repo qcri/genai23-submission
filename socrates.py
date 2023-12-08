@@ -2,7 +2,7 @@ import chromadb
 from dotenv import load_dotenv
 from langchain.embeddings.gpt4all import GPT4AllEmbeddings
 from langchain.chat_models import AzureChatOpenAI
-from langchain.schema import HumanMessage, SystemMessage, AIMessage
+from langchain.schema import HumanMessage, SystemMessage
 from os import environ
 
 load_dotenv()
@@ -42,13 +42,7 @@ def generate_response(query: str, n_results: int = 10) -> str:
 
     model = AzureChatOpenAI(azure_endpoint=environ['AZURE_OPENAI_ENDPOINT'], api_key=environ['AZURE_OPENAI_API_KEY'], openai_api_version=environ['OPENAI_API_VERSION'], model=environ['MODEL_NAME'])
 
-    messages = [SystemMessage(content='you are an AI assistant for philosophy questions'),
-                SystemMessage(content='use only information from the following texts to answer the query from the user')]
-
-    for doc in documents:
-        messages.append(AIMessage(content=doc))
-
-    messages.append(HumanMessage(content=query))
+    messages = [SystemMessage(content='use only information from the following texts to answer the query from the user'), SystemMessage(content='\n'.join(documents)), HumanMessage(content=query)]
 
     result = model(messages=messages)
 
