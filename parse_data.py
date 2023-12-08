@@ -3,10 +3,11 @@ import json
 
 def parseCsvLine(line):
     data = line.split('","')
-    assert(len(data) == 6)
+    assert len(data) == 6
     data[0] = data[0][1:]
     data[-1] = data[-1][:-2]
     return data
+
 
 def createIdToLineNum(lines):
     id_to_line = {}
@@ -15,9 +16,10 @@ def createIdToLineNum(lines):
         id_to_line[int(id)] = line_num
     return id_to_line
 
+
 def parseAndCombineData():
-    csv_file = open('./data/philosophy.csv', 'r', encoding="utf8")
-    json_file = open('./data/pg_embeddings.json', 'r', encoding="utf8")
+    csv_file = open("./data/philosophy.csv", "r", encoding="utf8")
+    json_file = open("./data/pg_embeddings.json", "r", encoding="utf8")
     records = json.load(json_file)["RECORDS"]
     new_records = {"RECORDS": []}
     lines = csv_file.readlines()
@@ -36,10 +38,9 @@ def parseAndCombineData():
         new_records["RECORDS"].append(new_record)
     csv_file.close()
     json_file.close()
-    combined_data_file = open('./data/parsed_data.json', 'w', encoding="utf8")
+    combined_data_file = open("./data/parsed_data.json", "w", encoding="utf8")
     json.dump(new_records, combined_data_file)
     combined_data_file.close()
-    
-        
-parseAndCombineData()
 
+
+parseAndCombineData()
