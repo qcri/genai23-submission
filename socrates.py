@@ -15,7 +15,6 @@ COLLECTION_NAME = "philosophy"
 gpt4allembed = GPT4AllEmbeddings()
 chroma_client = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
 
-
 def query_for_documents(query: str, n_results: int = 10, text_only=True) -> list[str]:
     global gpt4allembed, chroma_client
 
@@ -35,17 +34,16 @@ def query_for_documents(query: str, n_results: int = 10, text_only=True) -> list
     else:
         return query_results
 
-
 def generate_response_chatgpt(query: str, n_results: int = 10) -> str:
 
     documents = query_for_documents(query, n_results=n_results)
 
     model = AzureChatOpenAI(azure_endpoint=environ['AZURE_OPENAI_ENDPOINT'], api_key=environ['AZURE_OPENAI_API_KEY'], openai_api_version=environ['OPENAI_API_VERSION'], model=environ['MODEL_NAME'])
 
-    messages = [SystemMessage(content='you are an AI assistant for philosophy questions')]
+    messages = [SystemMessage(content='You are an AI assistant for philosophy questions. Use only information from the following texts to answer the query from the user.')]
 
     for doc in documents:
-        messages.append(AIMessage(content=doc))
+        messages.append(SystemMessage(content=doc))
 
     messages.append(HumanMessage(content=query))
 
@@ -54,17 +52,7 @@ def generate_response_chatgpt(query: str, n_results: int = 10) -> str:
     result = model(messages=messages)
 
     return result.content
-
-def generate_response_rag(query: str, n_results: int = 10) -> str:
-    global chroma_client
-    vectorstore = Chroma("philosophy", gpt4allembed, "./data", None, {"hnsw:space": "cosine"}, chroma_client, None)
-    retriever = vectorstore.as_retriever()
-    llm = AzureOpenAI(temperature=0.2)
-    qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever)
-    query = "What is philosophy"
-    result = qa({'query': query})
-    return result
     
 
 print('-------------------------------------------------------------------')
-print(generate_response_chatgpt('does language modify thoughts'))
+print(generate_response('Does language modify thoughts?'))
