@@ -13,7 +13,7 @@ gpt4allembed = GPT4AllEmbeddings()
 chroma_client = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
 
 
-def query_for_documents(query: str, n_results: int = 4, text_only=True) -> list[str]:
+def query_for_documents(query: str, n_results: int = 10, text_only=True) -> list[str]:
     global gpt4allembed, chroma_client
 
     query_results = gpt4allembed.embed_query(query)
@@ -32,8 +32,6 @@ def query_for_documents(query: str, n_results: int = 4, text_only=True) -> list[
     else:
         return query_results
 
-print('-------------------------------------------------------------------')
-print(query_for_documents('does language modify thoughts'))
 
 def generate_response(query: str, n_results: int = 10) -> str:
 
