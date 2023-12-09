@@ -1,0 +1,510 @@
+@font-face {
+    font-family: 'Bahnschrift Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/banhschrift.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Arial Nova Light';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/arialnovalight.ttf') format('truetype');
+  }
+  
+  h1{
+    font-family: 'Bahnschrift Condensed', sans-serif;
+    font-size: 3.3rem;
+    line-height: 1.7;
+    font-weight: bold;
+    color: #062245;
+  }
+  
+  body{
+    background-image: linear-gradient(#dae2ea , #9fbad3);
+  
+  }
+  
+  h2{
+    font-size: 2.5em;
+    line-height: 1.7;
+    font-family: 'Bahnschrift Condensed', sans-serif;
+    color: #062245;
+  }
+  
+  h3{
+    font-size: 2.0rem;
+    line-height: 1.5;
+    font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
+  }
+  
+  h4{
+    font-size: 1.3rem;
+    line-height: 1.2;
+    font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
+  
+  }
+  
+  a{
+    color: #a94c09;
+    text-decoration: none;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
+  
+  }
+  
+  a:hover{
+    color: red;
+    text-decoration: underline;
+  }
+  
+  p{
+    color:#062245;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
+  
+  }
+  
+  thead{
+    font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    background-color: #F9AB91;
+    border-color: black;
+  }
+  
+  td{
+    font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
+  }
+  
+  tbody{
+    background-color: whitesmoke;
+    border-color: black;
+  }
+  
+  nav{
+    background-image: linear-gradient(30deg, #F57145, #F2443B);
+  
+  }
+  
+  .container-fluid {
+    padding: 3% 10%;
+    position: relative;
+  }
+  
+  #title{
+    padding-top: 90px;
+  }
+  
+  #exec{
+    height: auto;
+    padding-bottom: 0;
+  }
+  
+  #team-heading {
+    padding-top: 15px;
+  }
+  
+  
+  #footer {
+    background-color: #5F89B5;
+    padding: 30px 0;
+  }
+  
+  .social {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 25px;
+    color: #4b4c4d;
+  }
+  
+  .social a{
+    font-size: 24px;
+    color: inherit;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 8px;
+    opacity: 0.75;
+  }
+  
+  .social a:hover{
+    opacity: 0.95;
+  
+  }
+  
+  .copyright{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  
+  
+  #fatima{
+    aspect-ratio: 1000/1333;
+    position: relative;
+    height: auto;
+    max-width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+  }
+  
+  #fatima-text{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  }
+  
+  #img {
+    height: auto;
+    max-width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+  }
+  
+  #title-text{
+    font-size: 2.2rem;
+    padding-left: 15px;
+    margin-bottom: 0;
+  }
+  
+  #logo{
+    height: auto;
+    max-width: 100%;
+    padding-bottom: 20px;
+    padding-top: 30px;
+  }
+  
+  #welcome{
+    padding-bottom: 30px;
+  }
+  
+  #pic {
+    height: auto;
+    max-width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  
+  #director{
+    background-color: #F9AB91;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .accordion-item{
+    border: 0px;
+    padding: 0px;
+    background-color: #FDC5AD;
+  }
+  
+  .the4{
+    background-color: #FDC5AD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .big4-para{
+    font-size: 1rem;
+  }
+  
+  .team-photos{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  
+  .logo {
+    font-size: x-large;
+    margin: 0;
+  }
+  
+  .navbar-toggler{
+    margin-right: 15px;
+  }
+  
+  .navbar{
+    height: 10%;
+  }
+
+  .nav-item {
+    padding: 0 15px;
+  }
+  
+  .nav-link {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  
+  .collapse {
+    justify-content: right;
+  }
+  
+  .carousel-indicators{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 10%;
+  }
+  
+  .car-indic-buttons{
+    height: 10px;
+  }
+  
+  .carousel-control-prev{
+  height: auto;
+  }
+  
+  
+  .carousel-control-next{
+    height: auto;
+  
+  }
+  
+  .carousel-item{
+    background-color: #FDC5AD;
+    border-radius: 10px;
+  }
+  
+  #exec-buttons-row{
+    padding-bottom: 18px;
+  }
+  
+  
+  .meems{
+    margin: 0;
+  }
+  
+  #delegation-button{
+    border-color: #F34E3E;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: 100%;
+    color: black;
+    font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
+    background-color: #F9AB91;
+  }
+  
+  #delegation-button:hover{
+    background-color: #FDC5AD
+  }
+  
+  #delegation-button:focus{
+    box-shadow: none;
+  }
+  
+  #delegation-header{
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  
+  .video-wrapper{
+    position: relative;
+    padding-bottom: 64.25%;
+    height: 0;
+  }
+  
+  .video-wrapper iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding-left: auto;
+    padding-right: auto;
+  }
+  
+  iframe{
+    display: block;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+  
+  
+  .exec-text{
+    margin-top: auto;
+    margin-bottom: auto;
+  
+  }
+  
+  #big4row{
+    padding-bottom: 20px;
+  }
+  
+  i{
+    transition: all .2s ease-in-out;
+  }
+  
+  i:hover{
+    transform: scale(1.5);
+  }
+  
+  .fitri{
+    color: whitesmoke;
+  }
+  
+  .fitri:hover{
+    color: orange;
+  }
+  
+  /* Desktop */
+  @media (min-width:764px) {
+  
+    .video-wrapper{
+      position: relative;
+      padding-bottom: 40%;
+      height: 0;
+    }
+    
+    .video-wrapper iframe{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      padding-left: auto;
+      padding-right: auto;
+    }
+  
+    h1{
+      font-size: 3.5rem;
+    }
+  
+    h2{
+      font-size: 2.7rem;
+    }
+  
+    h3{
+      font-size: 2.2rem;
+    }
+  
+    h4{
+      font-size: 1.6rem;
+    }
+  
+    p{
+      font-size: 1.3rem;
+    }
+  
+    td{
+      font-size: 1rem;
+    }
+    
+    .big4-para{
+      font-size: 1.1rem;
+    }
+  
+    a{
+      font-size: 1.3rem;
+    }
+  
+    #title-text{
+      font-size: 2.2rem;
+    }
+  
+  }
+  
+  /* Big screen */
+  @media (min-width:1600px) {
+  
+    h1{
+      font-size: 5rem;
+    }
+  
+    h2{
+      font-size: 3.5rem;
+    }
+  
+    h3{
+      font-size: 2.9rem;
+    }
+  
+    h4{
+      font-size: 2.3rem;
+    }
+    
+    .nav-link{
+      font-size: 2rem;
+    }
+  
+    p{
+      font-size: 1.8rem;
+    }
+  
+    td{
+      font-size: 1.5rem;
+    }
+    
+    .big4-para{
+      font-size: 1.6rem;
+    }
+  
+    a{
+      font-size: 1.8rem;
+    }
+  
+    #title {
+      padding-top: 9%;
+    }
+  
+    #logo{
+      width: 500px;
+      height: auto;
+    }
+  
+    .container-fluid {
+      padding: 3% 7%;
+      position: relative;
+  }
+  
+  #title-text{
+    font-size: 2.6rem;
+    padding-left: 15px;
+    margin-bottom: 0;
+  }
+  
+  .social a{
+    font-size: 24px;
+    color: inherit;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 20px;
+    opacity: 0.75;
+  }
+  
+  i{
+    scale: 1.5;
+  }
+  }

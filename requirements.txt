@@ -5,3 +5,5 @@ chromadb
 django
 python-dotenv
 gpt4all
+django-crispy-forms
+crispy-bootstrap5
