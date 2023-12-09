@@ -1,6 +1,3 @@
-{% extends 'hello.html' %}
-
-{% block form %}
 <ul> 
 {% for i in conversation %} 
     <li>{{i}}</li> 
@@ -12,4 +9,3 @@
     <button type="submit", name="test">ask philogpt</button>
 </form>
 <a href="/playground/">go back</a>
-{% endblock %}
