@@ -4,3 +4,4 @@ main/__pycache__
 .env
 home\__pycache__
 __pycache__
+.gitignore

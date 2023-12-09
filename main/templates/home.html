@@ -55,10 +55,14 @@
       </div>
     </div>
     <div class="container-fluid" id="chat">
+        <h2>Chat!</h2>
             <div class="container-fluid" id='chatbox' style='overflow-y: scroll; height: 300px;'>
                 <ul> 
                 {% for i in conversation %} 
-                    <li>{{i}}</li> 
+                    <li class="test2">{{i.0}}</li> 
+                    <li><p></p></li>
+                    <li class="test">{{i.1}}</li> 
+                    <li><p></p></li>
                 {% endfor %} 
                 </ul>
             </div>

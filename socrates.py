@@ -56,7 +56,7 @@ def generate_response(query: str, n_results: int = 10, return_documents=False) -
             *[SystemMessage(
                 content=doc
             ) for doc in documents],
-            SystemMessage(content="Use only the previous messages to have a conversation with the user. Prioritize the most recent user messages for context on ambiguous prompts."),
+            SystemMessage(content="Use only the previous messages to have a conversation with the user. Prioritize the most recent user messages for context on ambiguous prompts. Keep your answer concise"),
             HumanMessagePromptTemplate.from_template(
                 "{human_input}"
             )

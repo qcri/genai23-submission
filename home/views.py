@@ -19,10 +19,8 @@ def home(request):
             if data["prompt"] != '':
                 prompt = data['prompt']
                 form = testingform()
-                conversation.append('You: ' + prompt)
                 response = socrates.generate_response(prompt)
-                conversation.append('PhiloGPT: ' + response)
-            
+                conversation.insert(0, ['PhiloGPT: ' + response, 'You: ' + prompt])
     else:
         conversation=[]
         print(conversation)
