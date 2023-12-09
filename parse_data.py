@@ -28,7 +28,7 @@ def parseAndCombineData():
     for record in records:
         record_csv = parseCsvLine(lines[id_to_line[record["id"]]])
         new_record = {}
-        new_record["id"] = record["id"]
+        new_record["id"] = str(record["id"])
         new_record["embedding"] = eval(record["embedding"])
         new_record["title"] = record_csv[1]
         new_record["url"] = record_csv[2]
