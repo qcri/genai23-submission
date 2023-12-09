@@ -218,6 +218,10 @@
     border-radius: 25px;
   }
 
+  label{
+    font-size: 1.3rem;
+  }
+
   #pic {
     height: auto;
     max-width: 80%;
@@ -272,7 +276,8 @@
   } */
 
   button{
-    margin-top: 30px;
+    margin-top: 35px;
+    margin-left: 35%;
     padding: auto auto auto auto;
     background-color: #DEBB3E ; /* Green background color */
     color: #062245; /* White text color */

@@ -69,7 +69,31 @@ def generate_response(query: str, n_results: int = 10, return_documents=False) -
         memory=memory
     )
 
-    result = chat_llm_chain.predict(human_input=query)
+    try:
+        result = chat_llm_chain.predict(human_input=query)
+    except:
+        clear_history()
+        prompt = ChatPromptTemplate.from_messages(
+            [
+                SystemMessage(content="You are a friendly chatbot that answers philosophical queries from the user."),
+                MessagesPlaceholder(
+                    variable_name="chat_history"
+                ),
+                *[SystemMessage(
+                    content=doc
+                ) for doc in documents],
+                SystemMessage(content="Use only the previous messages to have a conversation with the user. Prioritize the most recent user messages for context on ambiguous prompts. Keep your answers concise. VERY IMPORTANT : Don't answer unless it is related to the topic of philosophy. IF you get a question like that, say that you do not know how to respond to this."),
+                HumanMessagePromptTemplate.from_template(
+                    "{human_input}"
+                )
+            ]
+        )
+        chat_llm_chain = LLMChain(
+            llm=model,
+            prompt=prompt,
+            memory=memory
+        )
+        result = chat_llm_chain.predict(human_input=query)
 
     if return_documents:
         return result, documents
