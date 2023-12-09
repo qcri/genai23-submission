@@ -1,10 +1,15 @@
 {% extends 'hello.html' %}
 
 {% block form %}
-this should discplay a form 
+<ul> 
+{% for i in conversation %} 
+    <li>{{i}}</li> 
+{% endfor %} 
+</ul> 
 <form method="post" action="/playground/hello/">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit", name="test">ask philogpt</button>
 </form>
+<a href="/playground/">go back</a>
 {% endblock %}
