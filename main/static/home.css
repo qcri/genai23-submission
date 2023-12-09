@@ -87,7 +87,11 @@
     background-image: linear-gradient(30deg, #F57145, #F2443B);
   
   }
-  
+
+  li{
+    list-style: none;
+  }
+
   .container-fluid {
     padding: 3% 10%;
     position: relative;
@@ -186,10 +190,15 @@
     padding-top: 30px;
   }
   
-  #welcome{
-    padding-bottom: 30px;
+  #about{
+    padding-top: 100px;
+    padding-bottom: 10px;
   }
   
+  #chatbox{
+    background-color: #6a6e91;
+  }
+
   #pic {
     height: auto;
     max-width: 80%;
@@ -239,8 +248,24 @@
     margin-right: 15px;
   }
   
-  .navbar{
+  /* .navbar{
     height: 10%;
+  } */
+
+  button{
+    margin-top: 30px;
+    padding: auto auto auto auto;
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding around the text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add some border-radius for rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    font-size: 16px; /* Set font size */
+  }
+
+  button:hover {
+    background-color: #45a049; /* Darker green color on hover */
   }
 
   .nav-item {
