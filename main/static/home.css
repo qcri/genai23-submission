@@ -21,7 +21,7 @@
   }
   
   body{
-    background-image: linear-gradient(#dae2ea , #9fbad3);
+    background-color: #C2C4D1;
   
   }
   
@@ -66,6 +66,10 @@
     font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
   
   }
+
+  li{
+    color: whitesmoke;
+  }
   
   thead{
     font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
@@ -84,7 +88,7 @@
   }
   
   nav{
-    background-image: linear-gradient(30deg, #F57145, #F2443B);
+    background-color: #DEBB3E ;
   
   }
 
@@ -196,7 +200,7 @@
   }
   
   #chatbox{
-    background-color: #6a6e91;
+    background-color: #6A6E91 ;
   }
 
   #pic {
@@ -255,7 +259,7 @@
   button{
     margin-top: 30px;
     padding: auto auto auto auto;
-    background-color: #4CAF50; /* Green background color */
+    background-color: #BFB07A ; /* Green background color */
     color: white; /* White text color */
     padding: 10px 20px; /* Padding around the text */
     border: none; /* Remove border */
@@ -265,7 +269,7 @@
   }
 
   button:hover {
-    background-color: #45a049; /* Darker green color on hover */
+    background-color: #5d5330 ; /* Darker green color on hover */
   }
 
   .nav-item {
