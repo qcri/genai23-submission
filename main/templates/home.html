@@ -1,15 +1,28 @@
-{% extends 'hello.html' %}
-
-{% block form %}
-<ul> 
-{% for i in conversation %} 
-    <li>{{i}}</li> 
-{% endfor %} 
-</ul> 
-<form method="post" action="/home/">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit", name="test">ask philogpt</button>
-</form>
-<a href="/playground/">go back</a>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiloGPT</title>
+    <link rel="stylesheet" type="text/css" href={% static "home.css"%}/>
+</head>
+<body>
+    <p>navbar</p>
+    <p>hero section</p>
+    <p>about</p>
+    <p>chatbot</p>
+    <ul> 
+    {% for i in conversation %} 
+        <li>{{i}}</li> 
+    {% endfor %} 
+    </ul> 
+    <form method="post" action="/home/">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit", name="test">ask philogpt</button>
+    </form>
+    <a href="/playground/">to playground</a>
+    <script src={% static "home.js"%}></script>
+</body>
+</html>

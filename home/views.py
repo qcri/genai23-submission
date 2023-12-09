@@ -20,6 +20,7 @@ def home(request):
                 conversation.append("halellouya")
             else:
                 conversation.append('too bad')
+        form = testingform()
     else:
         conversation=[]
         print(conversation)
