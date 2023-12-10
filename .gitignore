@@ -1,0 +1,7 @@
+playground/__pycache__
+playground/migrations/__pycache__
+main/__pycache__
+.env
+home\__pycache__
+__pycache__
+.gitignore
