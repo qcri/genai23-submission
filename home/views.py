@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from .forms import testingform
-import socrates
+# import socrates
 
 conversation=[]
 # Create your views here.
@@ -19,7 +19,8 @@ def home(request):
             if data["prompt"] != '':
                 prompt = data['prompt']
                 form = testingform()
-                response = socrates.generate_response(prompt)
+                # response = socrates.generate_response(prompt)
+                response='true'
                 conversation.insert(0, ['PhiloGPT: ' + response, 'You: ' + prompt])
     else:
         conversation=[]

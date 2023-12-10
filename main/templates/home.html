@@ -36,17 +36,17 @@
             </ul>
           </div>
         </nav>
-        <div class="row align-items-center">
+    </div>
+        <div class="align-items-center">
           <div class="col">
             <img
               src={% static "images/philogpt.gif"%}
-              class="rounded mx-auto d-block"
+              class="rounded d-block"
               id="logo"
               alt="" />
           </div>
         </div>
-      </div>
-    <div class="container-fluid"  id="about">
+    <div class="container-fluid"  id="about", style="padding-bottom: 25%;">
       <div class="col-md-8">
         <h1>Welcome to PhiloGPT!</h1>
         <h3>
@@ -54,9 +54,9 @@
         </h3>
       </div>
     </div>
-    <div class="container-fluid" id="chat">
+    <div class="container-fluid" id="chat", style="padding-bottom: 25px; padding-top: 0px; margin-top: 0;">
         <h2>Chat!</h2>
-            <div class="container-fluid" id='chatbox' style='overflow-y: scroll; height: 300px;'>
+            <div class="container-fluid" id='chatbox' style='overflow-y: scroll; height: 500px;'>
                 <ul> 
                 {% for i in conversation %} 
                     <li class="test2">{{i.0}}</li> 
@@ -70,12 +70,12 @@
             <form method="post" action="/home/#chat">
                 {% csrf_token %}
                 <div class="row" class="form-control">
-                    <div class="col-10">
+                    <div class="col-11">
                         <div>
                             {{ form.prompt|as_crispy_field }}
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-1">
                         <button type="submit", name="test">Submit</button>
                     </div>
                 </div>

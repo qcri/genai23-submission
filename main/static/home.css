@@ -36,6 +36,7 @@
     font-size: 2.0rem;
     line-height: 1.5;
     font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
+    color: #062245;
   }
   
   h4{
@@ -189,9 +190,15 @@
   
   #logo{
     height: auto;
+    width: 200%;
     max-width: 100%;
-    padding-bottom: 20px;
-    padding-top: 30px;
+    /* padding-bottom: 20px;
+    padding-top: 30px; */
+    /* padding: auto auto auto auto; */
+    padding-left: 0;
+    margin-left: 0;
+    border: none;
+    padding-top: 100px;
   }
 
   .test{
@@ -205,12 +212,12 @@
   }
 
   #chat{
-    padding-top: 100px;
+    padding-top: 0px;
   }
   
   #about{
-    padding-top: 100px;
-    padding-bottom: 10px;
+    padding-top: 350px;
+    padding-bottom: 300px;
   }
   
   #chatbox{
@@ -220,6 +227,21 @@
 
   label{
     font-size: 1.3rem;
+    color: #062245;
+    font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
+  }
+
+  input, input:focus, input:focus-visible, input:focus-within{
+    background-color: #062245;
+    color: #DEBB3E;
+    margin-right: 0;
+    padding-right: 0;
+  }
+  .form-control, .form-control:focus, .form-control:focus-visible, .form-control:focus-within{
+    background-color: #062245;
+    color: #DEBB3E;
+    margin-right: 0;
+    padding-right: 0;
   }
 
   #pic {
@@ -276,16 +298,16 @@
   } */
 
   button{
-    margin-top: 35px;
-    margin-left: 35%;
+    margin-top: 40px;
+    height: 40%;
     padding: auto auto auto auto;
     background-color: #DEBB3E ; /* Green background color */
     color: #062245; /* White text color */
-    padding: 10px 20px; /* Padding around the text */
     border: none; /* Remove border */
     border-radius: 5px; /* Add some border-radius for rounded corners */
     cursor: pointer; /* Change cursor on hover */
     font-size: 16px; /* Set font size */
+    font-family: 'Arial Nova Light', Arial, Helvetica, sans-serif;
   }
 
   button:hover {
